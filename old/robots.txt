@@ -1,0 +1,3 @@
+﻿User-agent: *
+Sitemap: https://projected.xyz/sitemap.xml
+Disallow: /ghost/

@@ -1,0 +1,199 @@
+﻿
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Going serverless on my ghost blog with s3, route 53, and cloudfront</title>
+    <meta name="description" content="">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/screen.css?v=3192503dc0">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,400">
+
+    <link rel="canonical" href="https://projected.xyz/2018/02/17/going-serverless-on-my-ghost-blog-with-s3-and-cloudfront/">
+    
+    <meta property="og:site_name" content="projected.xyz">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Going serverless on my ghost blog with s3, route 53, and cloudfront">
+    <meta property="og:description" content="Why? So I've had a blog for years, the first permutation was rockymountaingeo.com. I've always done hosting with some sort of LAMP server. This has been great. Super low cost, low maintinence linux setup. Blah blah blah. When I...">
+    <meta property="og:url" content="https://projected.xyz/2018/02/17/going-serverless-on-my-ghost-blog-with-s3-and-cloudfront/">
+    <meta property="og:image" content="https://projected.xyz/content/images/2018/02/level-up-ds.jpg">
+    <meta property="article:published_time" content="2018-02-17T05:20:30.363Z">
+    <meta property="article:modified_time" content="2018-02-17T16:50:32.508Z">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Going serverless on my ghost blog with s3, route 53, and cloudfront">
+    <meta name="twitter:description" content="Why? So I've had a blog for years, the first permutation was rockymountaingeo.com. I've always done hosting with some sort of LAMP server. This has been great. Super low cost, low maintinence linux setup. Blah blah blah. When I...">
+    <meta name="twitter:url" content="https://projected.xyz/2018/02/17/going-serverless-on-my-ghost-blog-with-s3-and-cloudfront/">
+    <meta name="twitter:image:src" content="https://projected.xyz/content/images/2018/02/level-up-ds.jpg">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": "projected.xyz",
+    "author": {
+        "@type": "Person",
+        "name": "Alex Mahrou",
+        "url": "https://projected.xyz/author/alex",
+        "sameAs": null
+    },
+    "headline": "Going serverless on my ghost blog with s3, route 53, and cloudfront",
+    "url": "https://projected.xyz/2018/02/17/going-serverless-on-my-ghost-blog-with-s3-and-cloudfront/",
+    "datePublished": "2018-02-17T05:20:30.363Z",
+    "dateModified": "2018-02-17T16:50:32.508Z",
+    "image": "https://projected.xyz/content/images/2018/02/level-up-ds.jpg",
+    "description": "Why? So I&#x27;ve had a blog for years, the first permutation was rockymountaingeo.com. I&#x27;ve always done hosting with some sort of LAMP server. This has been great. Super low cost, low maintinence linux setup. Blah blah blah. When I..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.5">
+    <link rel="alternate" type="application/rss+xml" title="projected.xyz" href="https://projected.xyz/rss/">
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-65868830-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</head>
+<body class="post-template">
+
+    
+
+
+<header class="main-header post-head " style="background-image: url(../../../../content/images/2018/02/level-up-ds.jpg)">
+    <nav class="main-nav overlay clearfix">
+        <a class="back-button icon-arrow-left" href="https://projected.xyz">Home</a>
+        <a class="subscribe-button icon-feed" href="https://projected.xyz/rss/">Subscribe</a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">Going serverless on my ghost blog with s3, route 53, and cloudfront</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2018-02-17">17 February 2018</time> 
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p><strong>Why?</strong>
+So I've had a blog for years, the first permutation was rockymountaingeo.com. I've always done hosting with some sort of LAMP server. This has been great. Super low cost, low maintinence linux setup. Blah blah blah. When I made the switch to projected.xyz, I decided on the ghost platform and used bitnami as my host, because hey had a nice setup with some premaid images and I could bring those to the aws cloud. The cost was on par with other hosts-- things start with a free tier and then move up to around 9 - 12 bucks per month, and I got my very own dedicated server. This has been great for the last few years. But something has been increasingly bothering me. Why the hell am I paying to "serve" something that I literally don't even maintain? If you can count on two hands the amount you blog in one year, you probably shouldn't be maintaining a server. With all this talk of reducing energy consumption and saving the earth, running a blog in a datacenter that's serving your crappy content from 5 years ago that seldom gets read doesn't really seem like earthly stewardship to me. After all that piece you wrote on alternative energy just might be served by a godaddy server that's getting its power from a coal fired power plant (ouch). These thoughts usually hit me around renewal season with my domains that I've purchased and have yet to use. Total guilt for good intentions gone to waste.</p>
+
+<p>So I made a decision. For one, I'm letting my domains that I'll never use lapse. Say goodbye to spatialjoin.com and spatialjoin.org.  </p>
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Hey <a href="https://twitter.com/hashtag/gistribe?src=hash&amp;ref_src=twsrc%5Etfw">#gistribe</a> I'll be letting the domains <a href="https://t.co/4O7hOi8Jyj">https://t.co/4O7hOi8Jyj</a> and <a href="https://t.co/aoSYrhfULv">https://t.co/aoSYrhfULv</a> expire in February, I don't want to squat or receive $$$ on them because I "got to them first". Hoping for good karma for my future domain pursuits by doing this. <a href="https://t.co/c7zm8MGopR">pic.twitter.com/c7zm8MGopR</a></p>— Alex Mahrou ☁️ 📊 (@projectedxyz) <a href="https://twitter.com/projectedxyz/status/957286608809598978?ref_src=twsrc%5Etfw">January 27, 2018</a></blockquote>  
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>As of writing this, they're yours for the taking. More importantly, I decided that I'm done with the busienss of servers. Like really. Even Docker and Kubernetes (which sounds like some sort of obscure disease) are still to <em>server-like</em> for me. Yeah, <strong>bold claim</strong>, those are like bell bottoms-- you're gonna regret this in-between period in the future, trust me.  </p>
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/hashtag/DevDiscuss?src=hash&amp;ref_src=twsrc%5Etfw">#DevDiscuss</a> I haven't used containers and feel like I will sit this out, let hype curves pass, and wait for more innovative devops.</p>— Alex Mahrou ☁️ 📊 (@projectedxyz) <a href="https://twitter.com/projectedxyz/status/879877475282669568?ref_src=twsrc%5Etfw">June 28, 2017</a></blockquote>  
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>Patches, security, having a crappy DDOS target just sitting on the public internet (yeah done with that), serving up http only just seems kinda lame in 2018. This was compounded by the fact that amazon announced that they were raising their prime rates. That was it, the game was on, and I was going to get ahead of this however I could. I could no longer justify throwing away 10 bucks a month for crap. There had to be a better way.  </p>
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Amazon: "We raised the cost of prime!"<br>Me: "Time to transition my blog to static pages and save 10 bucks a month!"<br><br>The game of 🐈 and 🐁 continues</p>— Alex Mahrou ☁️ 📊 (@projectedxyz) <a href="https://twitter.com/projectedxyz/status/954731715775184896?ref_src=twsrc%5Etfw">January 20, 2018</a></blockquote>  
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>  
+
+<p>And finally, to me the last straw was google's announcement that they were drawing a line in the sand on http come July of 2018.  </p>
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Unofficially Say goodbye to http<a href="https://t.co/v6tutX0FQR">https://t.co/v6tutX0FQR</a></p>— Alex Mahrou ☁️ 📊 (@projectedxyz) <a href="https://twitter.com/projectedxyz/status/962347923446022144?ref_src=twsrc%5Etfw">February 10, 2018</a></blockquote>  
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>I looked around at various ways to go to a simplified architecture, increase performance, and save dough. <strong>Medium</strong> seemed like a good deal (Free), but they stopped supporting custom domains. Also, medium is great but it's just an extension of the twitter. In essence an exit to the walled garden leads to a bigger walled garden. Also there's the vanity aspect of medium, they have claps, or applause (whatever it's called), it's just another way to keep score. Even from my first blog's inception, I never cared to put analytics or tracking on it, monetize, drive comments, optimize SEO, measure my social media reach, clout, or [insert popularity contest metric here]. My blog just needs to be something I can write about whenever I get inspired, and serve as as one-way vessel to send off my thoughts into the ether of the internet spirit world like one of those candle boats on a river in Japan. Toro nagashi-- <a href="https://en.wikipedia.org/wiki/T%C5%8Dr%C5%8D_nagashi">yeah I googled it</a></p>
+
+<p>Also, the technical challenge on the <strong>medium</strong> avenue is, just... bush league (not worth a this meta-blog post about creating a blogging platform). No thanks. I kept looking. I learned about a <a href="https://github.com/axitkhurana/buster">tool called <strong>buster</strong> on github</a>. It's a python module that is a static site generator for ghost... SWEET. Most folks use it for taking snapshots of their ghost blogs and creating static websites on github pages. That's great, but github pages doesn't offer ssl support on custom domains and with the google timeline on chrome support for http ending, I figured I needed to continue the search. </p>
+
+<p><strong>ENTER AWS S3 w/Cloudfront CDN</strong> That's when I found that you can actually host a static website on aws s3. There's tons of writeups on how to set this up, <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html">even this little handy one from Amazon</a> Anyone that works with me or knows me well knows that I'm super bullish on Microsoft's Azure cloud-- I used it every chance I can get. But I'm no single cloud one-trick-pony. And if anyone REALLY knows me, they'd know that I started with AWS, and moved on to azure for more work, because that's where I've been able to create things working for fortune 500 firms that have EA agreements with Microsoft-- i.e. freebies. So for due diligence, I checked out the azure offer and feature for feature, I could have used azure, except for one thing... Amazon AWS offers free SSL certs in Cloudfront if you host your domain <a href="https://aws.amazon.com/certificate-manager/faqs/">dns records with them in aws route 53</a> and use their global cdn... That sealed the deal folks. The cdn thing intruiged me too. This means that I could literally have edge servers around the world to host my blog content enterprise style and only pay for storage. So yes, even if you go <strong>serverless</strong>, there is still always a server. I just upgraded my <em>server</em> to what is likely biggest front of servers in the world-- coattails and commodities folks, ride em like the wind.</p>
+
+<table style="border-collapse:collapse;border-spacing:0"><tr><th style="font-family:Arial, sans-serif;font-size:14px;font-weight:bold;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;vertical-align:top">Load Time</th><th style="font-family:Arial, sans-serif;font-size:14px;font-weight:bold;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;vertical-align:top">Geography</th><th style="font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;vertical-align:top"></th></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;vertical-align:top">268ms</td><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;vertical-align:top">Stockholm</td><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;vertical-align:top"></td></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;vertical-align:top">383ms</td><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;vertical-align:top">Melbourne</td><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;vertical-align:top"></td></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;vertical-align:top">185ms</td><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;vertical-align:top">San Jose</td><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;vertical-align:top"></td></tr><tr><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;vertical-align:top">289ms</td><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;vertical-align:top">New York</td><td style="font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;vertical-align:top"></td></tr></table>  
+
+<p>Yeah look below. This is austrailia in under a second, <strong>because I can</strong>. LOL <br>
+<img src="../../../../content/images/2018/02/austrailia.PNG" alt="Austrailia in under a second, because I can"></p>
+
+<p>So what did I have to do? This is by no means a technical step by step but rather a punch list high level stuff I needed to get done. </p>
+
+<ol>
+<li>Moved my domain DNS (first) and domain wholly over to AWS Route 53 (one time fee of $12 bucks; well worth it)  </li>
+<li>Created s3 static website using amazon's step-by-step referenced above  </li>
+<li>Created a cloudfront distribution that points to my s3 bucket address <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/website-hosting-cloudfront-walkthrough.html">with this walkthrough</a>  </li>
+<li>Assigned a free ssl certificate using AWS Certificate Manager <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-https.html">with this walkthrough</a>  </li>
+<li>Putty'd in to my bitnami server running ghost and ran pip install buster to get buster  </li>
+<li>Generated the static website with buster <br>
+<img src="../../../../content/images/2018/02/buster.gif" alt=""></li>
+<li>Oh how handy, with the bitnami server build, the aws CLI tools were already installed. So I <a href="https://stormpath.com/blog/ultimate-guide-deploying-static-site-aws">followed the instuctions here</a> to push my website directly to s3.</li>
+</ol>
+
+<p><strong>Still to do</strong> I need to fix my rss and home links. I'd also plan to automate this all in one script that'll run buster, fix the home/rss links/feeds, then push to aws. That's a low bar. </p>
+
+<p><strong>In Conclusion</strong>, I've reduced my monthly hosting bill by 99%, increased security, rid myself of server/patch management, and increased my little blog's resiliency to that of an internet fortress with the giant mote of aws. I'd also like to think that I'm eliminating waste somehow, but I have yet to see a quantitative metric to prove as such-- other than my bank account. </p>
+
+<p>My old binami server is now just a dev server that I shut down when I'm not using, so that <em>presumably</em> some bitcoin bro in his parents basement can repurpose those cores to achieve his lamborghini/bugatti dreams.  &lt;- But that's a blog post for another day.</p>
+
+<p>🍺<strong>Cheers</strong>🍺,</p>
+
+<p>Alex</p>
+        </section>
+
+        <footer class="post-footer">
+
+
+
+            <section class="author">
+                <h4><a href="../../../../author/alex/">Alex Mahrou</a></h4>
+
+                    <p>Read <a href="../../../../author/alex/">more posts</a> by this author.</p>
+                <div class="author-meta">
+                    
+                    
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="https://twitter.com/share?text=Going%20serverless%20on%20my%20ghost%20blog%20with%20s3%2C%20route%2053%2C%20and%20cloudfront&amp;url=https://projected.xyz/2018/02/17/going-serverless-on-my-ghost-blog-with-s3-and-cloudfront/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://projected.xyz/2018/02/17/going-serverless-on-my-ghost-blog-with-s3-and-cloudfront/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=https://projected.xyz/2018/02/17/going-serverless-on-my-ghost-blog-with-s3-and-cloudfront/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+
+</main>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="https://projected.xyz">projected.xyz</a> © 2018</section>
+        <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
+    </footer>
+
+    <script src="../../../../public/jquery.min.js?v=3192503dc0"></script>
+
+    <script type="text/javascript" src="../../../../assets/js/jquery.fitvids.js?v=3192503dc0"></script>
+    <script type="text/javascript" src="../../../../assets/js/index.js?v=3192503dc0"></script>
+
+</body>

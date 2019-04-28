@@ -1,0 +1,169 @@
+﻿
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>The ArcGIS Identity Crisis Part Two</title>
+    <meta name="description" content="Why can't ArcGIS Pro publish to Server?
+ Read this if You're going to the 2018 #EsriPartnerConference or #DevSummit. #GIS #GISTRIBE">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/screen.css?v=3192503dc0">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,400">
+
+    <link rel="canonical" href="https://projected.xyz/2018/03/03/the-arcgis-identity-crisis-part-two/">
+    
+    <meta property="og:site_name" content="projected.xyz">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="The ArcGIS Identity Crisis Part Two">
+    <meta property="og:description" content="Why can't ArcGIS Pro publish to Server?
+ Read this if You're going to the 2018 #EsriPartnerConference or #DevSummit. #GIS #GISTRIBE...">
+    <meta property="og:url" content="https://projected.xyz/2018/03/03/the-arcgis-identity-crisis-part-two/">
+    <meta property="og:image" content="https://projected.xyz/content/images/2018/03/Remora.jpg">
+    <meta property="article:published_time" content="2018-03-03T17:26:39.094Z">
+    <meta property="article:modified_time" content="2018-03-03T17:26:39.092Z">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The ArcGIS Identity Crisis Part Two">
+    <meta name="twitter:description" content="Why can't ArcGIS Pro publish to Server?
+ Read this if You're going to the 2018 #EsriPartnerConference or #DevSummit. #GIS #GISTRIBE...">
+    <meta name="twitter:url" content="https://projected.xyz/2018/03/03/the-arcgis-identity-crisis-part-two/">
+    <meta name="twitter:image:src" content="https://projected.xyz/content/images/2018/03/Remora.jpg">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": "projected.xyz",
+    "author": {
+        "@type": "Person",
+        "name": "Alex Mahrou",
+        "url": "https://projected.xyz/author/alex",
+        "sameAs": null
+    },
+    "headline": "The ArcGIS Identity Crisis Part Two",
+    "url": "https://projected.xyz/2018/03/03/the-arcgis-identity-crisis-part-two/",
+    "datePublished": "2018-03-03T17:26:39.094Z",
+    "dateModified": "2018-03-03T17:26:39.092Z",
+    "image": "https://projected.xyz/content/images/2018/03/Remora.jpg",
+    "description": "Why can&#x27;t ArcGIS Pro publish to Server?\n Read this if You&#x27;re going to the 2018 #EsriPartnerConference or #DevSummit. #GIS #GISTRIBE..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.5">
+    <link rel="alternate" type="application/rss+xml" title="projected.xyz" href="https://projected.xyz/rss/">
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-65868830-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</head>
+<body class="post-template">
+
+    
+
+
+<header class="main-header post-head " style="background-image: url(../../../../content/images/2018/03/Remora.jpg)">
+    <nav class="main-nav overlay clearfix">
+        <a class="back-button icon-arrow-left" href="https://projected.xyz">Home</a>
+        <a class="subscribe-button icon-feed" href="https://projected.xyz/rss/">Subscribe</a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">The ArcGIS Identity Crisis Part Two</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2018-03-03">03 March 2018</time> 
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p><strong>Back in August of 2016,</strong> I published a post entitled "The ArcGIS Identity Crisis". I was frustrated with the direction of the product with named users. Little did I know that after publishing this post, so many folks shared my same frustrations. <a href="https://projected.xyz/2016/08/06/the-arcgis-identity-crisis/">The ArcGIS Identity Crisis</a></p>
+
+<p>I might have had a hand in turning the tides to eventually get Esri to change their licensing to allow for unlimited level one users in Portal a year later. It's hard to say. But this change has been good for lots of folks. </p>
+
+<p>However, there's still a dilemma. Why can't we publish to ArcGIS Server directly to Pro? The explanation as to the incentives for Esri not to do so are crystal clear if you keep reading. As I write this, Esri Business Partners and Developers are headed to palm springs for the 2018 Esri Partner Conference and Dev Summit. If you're headed there this week, go look in the mirror and understand your business model as it relates to this tech, then ask yourself how might the product direction of this vendor begin to affect your bottom line in the future?</p>
+
+<p>From what I see with the product direction, they've released ArcGIS Pro years ago. Presumably on the premises that you now get better 3D! 64 Bit too! And they're working on 100% feature parity to ArcMap-- just <em>conveniently</em> leaving one or two things out....</p>
+
+<p>From the get go, I tried to use Pro, and given the fact that I did a ton of web gis patterns ArcGIS Server and the JS API, it was missing a critical feature, the ability to publish to ArcGIS Server. Okay cool, I waited, I asked devs and product managers every chance I got, "When will we get the ability to publish to ArcGIS Server direct? I can only publish to AGOL, and Portal, what gives?" The answer was always, "Let me get back to you..." Or (with a blank look) "You can publish to AGOL or Portal, that's so much better than silly server!"</p>
+
+<p><strong>Let me tell, I was born, but I wasn't born yesterday.</strong> The push for Portal, AGOL, and ArcGIS Pro as a replacement for ArcMap, isn't <strong><em>all</em></strong> about feature functionality. It's berthed quite the opposite situation, a little situation called your pocket book and predictable recurring revenue due to Esri. This product management decision to keep the ability to publish directly to server is a way to force users into the Salesforce, named user model. It's quite ingenious, if they were to try and upgrade ArcMap in place, but take these features away, customers would be rioting in the streets and it would probably violate some agreements. So, what to do? Spin up a new, flashy product that does SO MUCH MORE, and quietly take away the features that will not serve Esri's long-term business incentives. </p>
+
+<p>Folks there will tell you, "Named Users! That's the way all software is going! Look at Microsoft, look at Salesforce!" Just one problem. You're not Salesforce, and you're certainly not Microsoft. And you shouldn't aspire to be the salesforce of GIS, why? Because your conflating two things that have diverging utility. Salesforce makes people money. There's not just ROI with Salesforce, it can freaking MAKE you money if you employ it right in your org. I'd happily pay for that. GIS, not so much. GIS doesn't help my cashflow, and it's delusional to think so. Whoever determined long ago to make this long-term decision to "Salesforce-ify" the ArcGIS Product needs to have their head checked. Named user models can be applied to where there is ubiquitous daily utility in your organization, for which Microsoft and Salesforce easily celebrate. Maps are great, but they aren't THAT great.</p>
+
+<p>Will things get worse? Yes, I predict they will. You know those things called License Managers, build on 1980's technology that allow for concurrent usage? Yeah, they just "work" in a self-serve fashion? Yeah that self-serve situation will go away, and be replaced with the administrivia of spinning up a named user for someone, and then having to assign a "role" to them based on what function you think they are. Are you a level one? A level two? An analyst? A developer? Feel painted into a corner and typecast yet? You should, that's where things are going. </p>
+
+<p>End to end, I can only imagine that once ArcMap goes away (just put two and two together here), ArcGIS Server goes away as well. Because it (ArcMap) was the only product that could feed it (Server). Thus, any WebGIS Patterns and Practices will REQUIRE the middleware of Portal and AGOL, and the named user burden that goes with it. If your business model relies on an ASP Commercial license of server, your wheels should really be spinning now.</p>
+
+<p>Now let's think like a crook here. How else could they hamper our freedoms to interoperability after this phase is "complete?". Oh, I've got one, how about we remove the RDBMS functionality (at least what's exposed to the end user), and move all multi-user editing workflows completely to the Portal/AGOL proprietary database? Goodbye SDE. Why not? They'll probably claim it's not Web-GIS friendly, etc., push Feature services in their stead. It'll take time, but I can assure you it'll probably happen when feature services get to that point of maturity. Because the incentive here is clear. <strong>End-to-end ingress AND egress to "The Platform" unlocked by the named user only.</strong> If only they could find a way to license printed maps off of our plotters and charge anyone who happens to look at said maps.</p>
+
+<p>The only business partners and developers to survive this long-term war of attrition will have solutions that are completely DERIVATIVE and SUBSERVIENT of Esri's product. You job will be to sell the whole platform (don't all your customers want Collector?), and your little contribution will be analogous to a remora on a shark. You'll get by, ride the current of the beast, and be happy that you have a home, until Esri either determines that features from your cute product aren't in their product roadmap ( you live) OR they determine that they'd be "better" to offer this product, presumably because they're better suited to an end-customers are getting "confused" (you die). <br>
+<img src="../../../../content/images/2018/03/giphy--1-.gif" alt="">
+Either way, if you're a developer or business partner that has made money off of this stack. I suggest you start contingency planning right away. Don't aspire to be a remora. I don't see any course correction here in the future. </p>
+
+<p>Cheers,</p>
+
+<p>Alex</p>
+        </section>
+
+        <footer class="post-footer">
+
+
+
+            <section class="author">
+                <h4><a href="../../../../author/alex/">Alex Mahrou</a></h4>
+
+                    <p>Read <a href="../../../../author/alex/">more posts</a> by this author.</p>
+                <div class="author-meta">
+                    
+                    
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="https://twitter.com/share?text=The%20ArcGIS%20Identity%20Crisis%20Part%20Two&amp;url=https://projected.xyz/2018/03/03/the-arcgis-identity-crisis-part-two/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://projected.xyz/2018/03/03/the-arcgis-identity-crisis-part-two/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=https://projected.xyz/2018/03/03/the-arcgis-identity-crisis-part-two/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+
+</main>
+
+
+
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="https://projected.xyz">projected.xyz</a> © 2018</section>
+        <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
+    </footer>
+
+    <script src="../../../../public/jquery.min.js?v=3192503dc0"></script>
+
+    <script type="text/javascript" src="../../../../assets/js/jquery.fitvids.js?v=3192503dc0"></script>
+    <script type="text/javascript" src="../../../../assets/js/index.js?v=3192503dc0"></script>
+
+</body>
