@@ -14,45 +14,45 @@
     <link rel="stylesheet" type="text/css" href="../../../../assets/css/screen.css?v=3192503dc0">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,400">
 
-    <link rel="canonical" href="https://projected.xyz/2018/03/24/arcgis-identity-crisis-part-3-a-new-hope/">
+    <link rel="canonical" href="https://projected.xyz/old/2018/03/24/arcgis-identity-crisis-part-3-a-new-hope/">
     
-    <meta property="og:site_name" content="projected.xyz">
+    <meta property="og:site_name" content="projected.xyz/old">
     <meta property="og:type" content="article">
     <meta property="og:title" content="ArcGIS Identity Crisis Part 3">
     <meta property="og:description" content="I'm not one to complain without a solution, and the previous blog post The ArcGIS Identity Crisis Part Two, was kind of left open-ended. Some might have walked away thinking, &quot;Oh so Alex wants everything for free, huh?&quot;. Not necessarily....">
-    <meta property="og:url" content="https://projected.xyz/2018/03/24/arcgis-identity-crisis-part-3-a-new-hope/">
-    <meta property="og:image" content="https://projected.xyz/content/images/2018/03/tollbooth.jpg">
+    <meta property="og:url" content="https://projected.xyz/old/2018/03/24/arcgis-identity-crisis-part-3-a-new-hope/">
+    <meta property="og:image" content="https://projected.xyz/old/content/images/2018/03/tollbooth.jpg">
     <meta property="article:published_time" content="2018-03-24T04:31:36.054Z">
     <meta property="article:modified_time" content="2018-03-24T14:57:48.911Z">
     
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="ArcGIS Identity Crisis Part 3">
     <meta name="twitter:description" content="I'm not one to complain without a solution, and the previous blog post The ArcGIS Identity Crisis Part Two, was kind of left open-ended. Some might have walked away thinking, &quot;Oh so Alex wants everything for free, huh?&quot;. Not necessarily....">
-    <meta name="twitter:url" content="https://projected.xyz/2018/03/24/arcgis-identity-crisis-part-3-a-new-hope/">
-    <meta name="twitter:image:src" content="https://projected.xyz/content/images/2018/03/tollbooth.jpg">
+    <meta name="twitter:url" content="https://projected.xyz/old/2018/03/24/arcgis-identity-crisis-part-3-a-new-hope/">
+    <meta name="twitter:image:src" content="https://projected.xyz/old/content/images/2018/03/tollbooth.jpg">
     
     <script type="application/ld+json">
 {
     "@context": "https://schema.org",
     "@type": "Article",
-    "publisher": "projected.xyz",
+    "publisher": "projected.xyz/old",
     "author": {
         "@type": "Person",
         "name": "Alex Mahrou",
-        "url": "https://projected.xyz/author/alex",
+        "url": "https://projected.xyz/old/author/alex",
         "sameAs": null
     },
     "headline": "ArcGIS Identity Crisis Part 3",
-    "url": "https://projected.xyz/2018/03/24/arcgis-identity-crisis-part-3-a-new-hope/",
+    "url": "https://projected.xyz/old/2018/03/24/arcgis-identity-crisis-part-3-a-new-hope/",
     "datePublished": "2018-03-24T04:31:36.054Z",
     "dateModified": "2018-03-24T14:57:48.911Z",
-    "image": "https://projected.xyz/content/images/2018/03/tollbooth.jpg",
+    "image": "https://projected.xyz/old/content/images/2018/03/tollbooth.jpg",
     "description": "I&#x27;m not one to complain without a solution, and the previous blog post The ArcGIS Identity Crisis Part Two, was kind of left open-ended. Some might have walked away thinking, &quot;Oh so Alex wants everything for free, huh?&quot;. Not necessarily...."
 }
     </script>
 
     <meta name="generator" content="Ghost 0.5">
-    <link rel="alternate" type="application/rss+xml" title="projected.xyz" href="https://projected.xyz/rss/">
+    <link rel="alternate" type="application/rss+xml" title="projected.xyz/old" href="https://projected.xyz/old/rss/">
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -71,8 +71,8 @@
 
 <header class="main-header post-head " style="background-image: url(../../../../content/images/2018/03/tollbooth.jpg)">
     <nav class="main-nav overlay clearfix">
-        <a class="back-button icon-arrow-left" href="https://projected.xyz">Home</a>
-        <a class="subscribe-button icon-feed" href="https://projected.xyz/rss/">Subscribe</a>
+        <a class="back-button icon-arrow-left" href="https://projected.xyz/old">Home</a>
+        <a class="subscribe-button icon-feed" href="https://projected.xyz/old/rss/">Subscribe</a>
     </nav>
 </header>
 
@@ -88,7 +88,7 @@
         </header>
 
         <section class="post-content">
-            <p>I'm not one to complain without a solution, and the previous blog post <a href="https://projected.xyz/2018/03/03/the-arcgis-identity-crisis-part-two/">The ArcGIS Identity Crisis Part Two</a>, was kind of left open-ended. Some might have walked away thinking, "Oh so Alex wants everything for free, huh?". Not necessarily. I hope that folks at Esri are listening. My beef is on two fronts:</p>
+            <p>I'm not one to complain without a solution, and the previous blog post <a href="https://projected.xyz/old/2018/03/03/the-arcgis-identity-crisis-part-two/">The ArcGIS Identity Crisis Part Two</a>, was kind of left open-ended. Some might have walked away thinking, "Oh so Alex wants everything for free, huh?". Not necessarily. I hope that folks at Esri are listening. My beef is on two fronts:</p>
 
 <p><strong>First</strong>, Why introduce more middleware betweent the data tier and the web display? What used to be just ArcGIS Server and a Reverse Proxy (for on-prem) is now ArcGIS Server, a <strong>Mandatory Portal Installation</strong>, and a web adapter. This day-and-age, companies <em>should be</em> striving to pare down middleware, bloat, and create less administrivia for security. This has achieved quite the opposite. I don't see this getting any slimmer. In recent product announcements, they’re just making it easier to orchestrate the install of this bloat via Jupyter notebooks and/or chef automation. No thanks. Speed eating is still eating too much. Regardless if it's at speed. The bloat persists.
 </p><div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/11KBpBvcLG1xWU" width="100%" height="100%" style="position:absolute" frameborder="0" class="giphy-embed" allowfullscreen></iframe></div><p><a href="https://giphy.com/gifs/this-is-hot-97-11KBpBvcLG1xWU">via GIPHY</a></p>
@@ -149,13 +149,13 @@ I've come to gather that confidence in one’s product as a vendor is directly c
 
             <section class="share">
                 <h4>Share this post</h4>
-                <a class="icon-twitter" href="https://twitter.com/share?text=ArcGIS%20Identity%20Crisis%20Part%203&amp;url=https://projected.xyz/2018/03/24/arcgis-identity-crisis-part-3-a-new-hope/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <a class="icon-twitter" href="https://twitter.com/share?text=ArcGIS%20Identity%20Crisis%20Part%203&amp;url=https://projected.xyz/old/2018/03/24/arcgis-identity-crisis-part-3-a-new-hope/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                     <span class="hidden">Twitter</span>
                 </a>
-                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://projected.xyz/2018/03/24/arcgis-identity-crisis-part-3-a-new-hope/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://projected.xyz/old/2018/03/24/arcgis-identity-crisis-part-3-a-new-hope/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
                     <span class="hidden">Facebook</span>
                 </a>
-                <a class="icon-google-plus" href="https://plus.google.com/share?url=https://projected.xyz/2018/03/24/arcgis-identity-crisis-part-3-a-new-hope/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=https://projected.xyz/old/2018/03/24/arcgis-identity-crisis-part-3-a-new-hope/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
                     <span class="hidden">Google+</span>
                 </a>
             </section>
@@ -169,7 +169,7 @@ I've come to gather that confidence in one’s product as a vendor is directly c
 
 
     <footer class="site-footer clearfix">
-        <section class="copyright"><a href="https://projected.xyz">projected.xyz</a> © 2018</section>
+        <section class="copyright"><a href="https://projected.xyz/old">projected.xyz/old</a> © 2018</section>
         <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
     </footer>
 

@@ -14,45 +14,45 @@
     <link rel="stylesheet" type="text/css" href="../../../../assets/css/screen.css?v=3192503dc0">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,400">
 
-    <link rel="canonical" href="https://projected.xyz/2018/02/17/going-serverless-on-my-ghost-blog-with-s3-and-cloudfront/">
+    <link rel="canonical" href="https://projected.xyz/old/2018/02/17/going-serverless-on-my-ghost-blog-with-s3-and-cloudfront/">
     
-    <meta property="og:site_name" content="projected.xyz">
+    <meta property="og:site_name" content="projected.xyz/old">
     <meta property="og:type" content="article">
     <meta property="og:title" content="Going serverless on my ghost blog with s3, route 53, and cloudfront">
     <meta property="og:description" content="Why? So I've had a blog for years, the first permutation was rockymountaingeo.com. I've always done hosting with some sort of LAMP server. This has been great. Super low cost, low maintinence linux setup. Blah blah blah. When I...">
-    <meta property="og:url" content="https://projected.xyz/2018/02/17/going-serverless-on-my-ghost-blog-with-s3-and-cloudfront/">
-    <meta property="og:image" content="https://projected.xyz/content/images/2018/02/level-up-ds.jpg">
+    <meta property="og:url" content="https://projected.xyz/old/2018/02/17/going-serverless-on-my-ghost-blog-with-s3-and-cloudfront/">
+    <meta property="og:image" content="https://projected.xyz/old/content/images/2018/02/level-up-ds.jpg">
     <meta property="article:published_time" content="2018-02-17T05:20:30.363Z">
     <meta property="article:modified_time" content="2018-02-17T16:50:32.508Z">
     
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Going serverless on my ghost blog with s3, route 53, and cloudfront">
     <meta name="twitter:description" content="Why? So I've had a blog for years, the first permutation was rockymountaingeo.com. I've always done hosting with some sort of LAMP server. This has been great. Super low cost, low maintinence linux setup. Blah blah blah. When I...">
-    <meta name="twitter:url" content="https://projected.xyz/2018/02/17/going-serverless-on-my-ghost-blog-with-s3-and-cloudfront/">
-    <meta name="twitter:image:src" content="https://projected.xyz/content/images/2018/02/level-up-ds.jpg">
+    <meta name="twitter:url" content="https://projected.xyz/old/2018/02/17/going-serverless-on-my-ghost-blog-with-s3-and-cloudfront/">
+    <meta name="twitter:image:src" content="https://projected.xyz/old/content/images/2018/02/level-up-ds.jpg">
     
     <script type="application/ld+json">
 {
     "@context": "https://schema.org",
     "@type": "Article",
-    "publisher": "projected.xyz",
+    "publisher": "projected.xyz/old",
     "author": {
         "@type": "Person",
         "name": "Alex Mahrou",
-        "url": "https://projected.xyz/author/alex",
+        "url": "https://projected.xyz/old/author/alex",
         "sameAs": null
     },
     "headline": "Going serverless on my ghost blog with s3, route 53, and cloudfront",
-    "url": "https://projected.xyz/2018/02/17/going-serverless-on-my-ghost-blog-with-s3-and-cloudfront/",
+    "url": "https://projected.xyz/old/2018/02/17/going-serverless-on-my-ghost-blog-with-s3-and-cloudfront/",
     "datePublished": "2018-02-17T05:20:30.363Z",
     "dateModified": "2018-02-17T16:50:32.508Z",
-    "image": "https://projected.xyz/content/images/2018/02/level-up-ds.jpg",
+    "image": "https://projected.xyz/old/content/images/2018/02/level-up-ds.jpg",
     "description": "Why? So I&#x27;ve had a blog for years, the first permutation was rockymountaingeo.com. I&#x27;ve always done hosting with some sort of LAMP server. This has been great. Super low cost, low maintinence linux setup. Blah blah blah. When I..."
 }
     </script>
 
     <meta name="generator" content="Ghost 0.5">
-    <link rel="alternate" type="application/rss+xml" title="projected.xyz" href="https://projected.xyz/rss/">
+    <link rel="alternate" type="application/rss+xml" title="projected.xyz/old" href="https://projected.xyz/old/rss/">
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -71,8 +71,8 @@
 
 <header class="main-header post-head " style="background-image: url(../../../../content/images/2018/02/level-up-ds.jpg)">
     <nav class="main-nav overlay clearfix">
-        <a class="back-button icon-arrow-left" href="https://projected.xyz">Home</a>
-        <a class="subscribe-button icon-feed" href="https://projected.xyz/rss/">Subscribe</a>
+        <a class="back-button icon-arrow-left" href="https://projected.xyz/old">Home</a>
+        <a class="subscribe-button icon-feed" href="https://projected.xyz/old/rss/">Subscribe</a>
     </nav>
 </header>
 
@@ -89,7 +89,7 @@
 
         <section class="post-content">
             <p><strong>Why?</strong>
-So I've had a blog for years, the first permutation was rockymountaingeo.com. I've always done hosting with some sort of LAMP server. This has been great. Super low cost, low maintinence linux setup. Blah blah blah. When I made the switch to projected.xyz, I decided on the ghost platform and used bitnami as my host, because hey had a nice setup with some premaid images and I could bring those to the aws cloud. The cost was on par with other hosts-- things start with a free tier and then move up to around 9 - 12 bucks per month, and I got my very own dedicated server. This has been great for the last few years. But something has been increasingly bothering me. Why the hell am I paying to "serve" something that I literally don't even maintain? If you can count on two hands the amount you blog in one year, you probably shouldn't be maintaining a server. With all this talk of reducing energy consumption and saving the earth, running a blog in a datacenter that's serving your crappy content from 5 years ago that seldom gets read doesn't really seem like earthly stewardship to me. After all that piece you wrote on alternative energy just might be served by a godaddy server that's getting its power from a coal fired power plant (ouch). These thoughts usually hit me around renewal season with my domains that I've purchased and have yet to use. Total guilt for good intentions gone to waste.</p>
+So I've had a blog for years, the first permutation was rockymountaingeo.com. I've always done hosting with some sort of LAMP server. This has been great. Super low cost, low maintinence linux setup. Blah blah blah. When I made the switch to projected.xyz/old, I decided on the ghost platform and used bitnami as my host, because hey had a nice setup with some premaid images and I could bring those to the aws cloud. The cost was on par with other hosts-- things start with a free tier and then move up to around 9 - 12 bucks per month, and I got my very own dedicated server. This has been great for the last few years. But something has been increasingly bothering me. Why the hell am I paying to "serve" something that I literally don't even maintain? If you can count on two hands the amount you blog in one year, you probably shouldn't be maintaining a server. With all this talk of reducing energy consumption and saving the earth, running a blog in a datacenter that's serving your crappy content from 5 years ago that seldom gets read doesn't really seem like earthly stewardship to me. After all that piece you wrote on alternative energy just might be served by a godaddy server that's getting its power from a coal fired power plant (ouch). These thoughts usually hit me around renewal season with my domains that I've purchased and have yet to use. Total guilt for good intentions gone to waste.</p>
 
 <p>So I made a decision. For one, I'm letting my domains that I'll never use lapse. Say goodbye to spatialjoin.com and spatialjoin.org.  </p>
 
@@ -167,13 +167,13 @@ So I've had a blog for years, the first permutation was rockymountaingeo.com. I'
 
             <section class="share">
                 <h4>Share this post</h4>
-                <a class="icon-twitter" href="https://twitter.com/share?text=Going%20serverless%20on%20my%20ghost%20blog%20with%20s3%2C%20route%2053%2C%20and%20cloudfront&amp;url=https://projected.xyz/2018/02/17/going-serverless-on-my-ghost-blog-with-s3-and-cloudfront/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <a class="icon-twitter" href="https://twitter.com/share?text=Going%20serverless%20on%20my%20ghost%20blog%20with%20s3%2C%20route%2053%2C%20and%20cloudfront&amp;url=https://projected.xyz/old/2018/02/17/going-serverless-on-my-ghost-blog-with-s3-and-cloudfront/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                     <span class="hidden">Twitter</span>
                 </a>
-                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://projected.xyz/2018/02/17/going-serverless-on-my-ghost-blog-with-s3-and-cloudfront/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://projected.xyz/old/2018/02/17/going-serverless-on-my-ghost-blog-with-s3-and-cloudfront/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
                     <span class="hidden">Facebook</span>
                 </a>
-                <a class="icon-google-plus" href="https://plus.google.com/share?url=https://projected.xyz/2018/02/17/going-serverless-on-my-ghost-blog-with-s3-and-cloudfront/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=https://projected.xyz/old/2018/02/17/going-serverless-on-my-ghost-blog-with-s3-and-cloudfront/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
                     <span class="hidden">Google+</span>
                 </a>
             </section>
@@ -187,7 +187,7 @@ So I've had a blog for years, the first permutation was rockymountaingeo.com. I'
 
 
     <footer class="site-footer clearfix">
-        <section class="copyright"><a href="https://projected.xyz">projected.xyz</a> © 2018</section>
+        <section class="copyright"><a href="https://projected.xyz/old">projected.xyz/old</a> © 2018</section>
         <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
     </footer>
 
