@@ -4,13 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Alex | Builds What Matters</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="security" href="/.well-known/security.txt" />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- SEO & Identity -->
+  <meta name="author" content="Alex Mahrou" />
+  <meta name="description" content="Alex Mahrou – Builder of platforms, systems thinker, and architect of scale." />
+  <meta name="keywords" content="Alex Mahrou, platform builder, data platforms, emerging technology, systems design, Alluvial, Echo, analytics, strategy" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Security & Trust -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; script-src 'self'; style-src 'self' fonts.googleapis.com; font-src fonts.gstatic.com;" />
+
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
       height: 100%;
       font-family: 'Space Grotesk', sans-serif;
@@ -60,16 +68,28 @@
       color: #ccc;
       margin-bottom: 2rem;
     }
-    a {
-      font-weight: 600;
+    .link-group {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .link-subtle {
+      font-size: 1rem;
+      color: #90e0ef;
+      opacity: 0.7;
+    }
+    .link-subtle:hover {
+      opacity: 1;
+    }
+    .link-primary {
+      font-size: 1.1rem;
       color: #00b4d8;
-      text-decoration: none;
-      border-bottom: 2px solid transparent;
+      font-weight: 600;
       transition: all 0.3s ease-in-out;
     }
-    a:hover {
+    .link-primary:hover {
       color: #90e0ef;
-      border-color: #90e0ef;
     }
     @media (max-width: 900px) {
       .container {
@@ -92,33 +112,6 @@
     @keyframes fadeIn {
       to { opacity: 1; }
     }
-	.link-group {
-  margin-top: 2.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-	}
-
-	.link-subtle {
-	  font-size: 1rem;
-	  color: #90e0ef;
-	  opacity: 0.7;
-	}
-
-	.link-subtle:hover {
-	  opacity: 1;
-	}
-
-	.link-primary {
-	  font-size: 1.1rem;
-	  color: #00b4d8;
-	  font-weight: 600;
-	  transition: all 0.3s ease-in-out;
-	}
-
-	.link-primary:hover {
-	  color: #90e0ef;
-	}
   </style>
 </head>
 <body class="fade-in">
@@ -130,17 +123,16 @@
       <p>If you're solving hard problems or thinking in frameworks, you’re probably in the right place.</p>
       <p>Reach out if you want to talk shop.</p>
       <div class="link-group">
-		<a href="#" id="contact-link" class="link-subtle">Let’s connect</a>
-		<a href="about.html" class="link-primary" onclick="event.preventDefault(); document.body.classList.remove('fade-in'); document.body.style.opacity = 0; setTimeout(() => { window.location.href='about.html'; }, 200);">About me →</a>
-	</div>
-
+        <a href="#" id="contact-link" class="link-subtle">Let’s connect</a>
+        <a href="about.html" class="link-primary" onclick="event.preventDefault(); document.body.classList.remove('fade-in'); document.body.style.opacity = 0; setTimeout(() => { window.location.href='about.html'; }, 200);">About me →</a>
+      </div>
     </div>
   </div>
   <script>
     const user = "alexmahrou";
-    const domain = "gmail.com";
+    const domain = "projected.xyz";
     const anchor = document.getElementById("contact-link");
-    anchor.href = `mailto:${user}@${domain}`;
+    anchor.href = `mailto:security@${domain}`;
     anchor.textContent = "Let’s connect";
   </script>
 </body>

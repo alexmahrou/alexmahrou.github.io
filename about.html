@@ -4,13 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About Alex Mahrou</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="security" href="/.well-known/security.txt" />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- SEO & Identity -->
+  <meta name="author" content="Alex Mahrou" />
+  <meta name="description" content="Alex Mahrou – Builder of platforms, systems thinker, and architect of scale." />
+  <meta name="keywords" content="Alex Mahrou, platform builder, data platforms, emerging technology, systems design, Alluvial, Echo, analytics, strategy" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Security & Trust -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; script-src 'self'; style-src 'self' fonts.googleapis.com; font-src fonts.gstatic.com;" />
+
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
       height: 100%;
       font-family: 'Space Grotesk', sans-serif;
@@ -69,27 +77,16 @@
         font-size: 2rem;
       }
     }
+    body.fade-in {
+      animation: fadeIn 1s ease-in forwards;
+      opacity: 0;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
   </style>
-<style>
-  body.fade-in {
-    animation: fadeIn 1s ease-in forwards;
-    opacity: 0;
-  }
-  @keyframes fadeIn {
-    to { opacity: 1; }
-  }
-</style>
-<style>
-  body.fade-in {
-    animation: fadeIn 1s ease-in forwards;
-    opacity: 0;
-  }
-  @keyframes fadeIn {
-    to { opacity: 1; }
-  }
-</style>
 </head>
-<body class="fade-in" class="fade-in">
+<body class="fade-in">
   <div class="about-container">
     <div class="overlay"></div>
     <div class="about-content">

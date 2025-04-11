@@ -1,0 +1,4 @@
+Contact: mailto:security@projected.xyz
+Preferred-Languages: en
+Canonical: https://projected.xyz/.well-known/security.txt
+Policy: https://projected.xyz
