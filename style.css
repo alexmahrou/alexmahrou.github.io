@@ -24,7 +24,6 @@ html, body {
   padding: 4rem;
   background: url('about-bg.jpg') center center/cover no-repeat;
 }
-
 .about-container::before {
   content: "";
   position: absolute;
@@ -38,7 +37,6 @@ html, body {
   max-width: 800px;
   color: #f4f4f4;
 }
-
 .bg {
   background: url('image.jpg') center center/cover no-repeat;
   filter: grayscale(40%) brightness(70%) contrast(105%) saturate(120%);
