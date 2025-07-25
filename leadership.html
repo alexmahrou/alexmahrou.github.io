@@ -1,85 +1,122 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Alex Mahrou - Leadership Manifesto</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 2rem;
-            background-color: #f9f9f9;
-            color: #333;
-            line-height: 1.6;
-        }
-        header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        h1 {
-            font-size: 2.5rem;
-            color: #2c3e50;
-        }
-        section {
-            margin-bottom: 2rem;
-            background: #fff;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        h2 {
-            color: #1a5276;
-            border-bottom: 2px solid #dcdcdc;
-            padding-bottom: 0.5rem;
-        }
-        ul {
-            padding-left: 1.5rem;
-        }
-        footer {
-            text-align: center;
-            font-style: italic;
-            margin-top: 3rem;
-            color: #777;
-        }
-    </style>
+<meta charset="UTF-8" />
+<title>Alex Mahrou — Leadership Manifesto</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+<!-- Google Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+
+<style>
+/* ----------  Theme tokens  ---------- */
+:root {
+  --clr-bg:        #f9fafb;
+  --clr-surface:   #ffffff;
+  --clr-text:      #1f2937;
+  --clr-accent:    #2563eb;      /* primary brand blue */
+  --clr-accent-2:  #0ea5e9;      /* cyan for hover / dark‑mode accent */
+  --radius:        0.75rem;
+  --shadow:        0 4px 18px rgba(0,0,0,.06);
+  --transition:    180ms cubic-bezier(.4,0,.2,1);
+}
+
+/* ----------  Global reset  ---------- */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  background:var(--clr-bg);
+  color:var(--clr-text);
+  line-height:1.65;
+  padding:2rem clamp(1rem,4vw,3rem);
+  display:flex;
+  flex-direction:column;
+  gap:1.75rem;
+}
+
+/* ----------  Typography scale  ---------- */
+h1{font-size:clamp(1.9rem,2.5vw+1rem,2.8rem);font-weight:700}
+h2{font-size:1.4rem;color:var(--clr-accent);margin-bottom:.8rem;display:flex;align-items:center;gap:.4rem}
+h2 span.icon{font-size:1.3em}
+p.lead{font-weight:600;margin-top:.4rem;color:#475569}
+
+/* ----------  Card container  ---------- */
+section{
+  background:var(--clr-surface);
+  padding:1.8rem 2rem;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  animation:fadeIn var(--transition) both;
+}
+@keyframes fadeIn{from{opacity:0;translate:0 8px}to{opacity:1;translate:0}}
+
+ul{display:flex;flex-direction:column;gap:.9rem;padding-left:1.2rem}
+li strong{font-weight:600;color:var(--clr-text)}
+
+/* ----------  Footer tagline  ---------- */
+footer{
+  text-align:center;
+  font-style:italic;
+  color:#64748b;
+  margin-top:.5rem;
+}
+
+/* ----------  Dark‑mode toggle  ---------- */
+@media (prefers-color-scheme: dark){
+  :root{
+    --clr-bg:#0e1117;
+    --clr-surface:#161b22;
+    --clr-text:#e2e8f0;
+    --shadow:none;
+  }
+  h2{color:var(--clr-accent-2)}
+  p.lead{color:#cbd5e1}
+}
+</style>
 </head>
 <body>
-    <header>
-        <h1>Alex Mahrou — Leadership Manifesto</h1>
-        <p>Director of Data Platforms | Strategic Technologist | Culture Steward</p>
-    </header>
 
-    <section>
-        <h2>🔥 Core Beliefs</h2>
-        <ul>
-            <li><strong>Transparency is non-negotiable:</strong> I believe in putting things in writing, owning mistakes, and making decisions visible. Backchannels, title-based maneuvering, and ambiguity erode trust—and I actively design against them.</li>
-            <li><strong>Integrity beats hierarchy:</strong> I respect expertise, not titles. I value those who speak plainly, admit when they’re wrong, and prioritize clarity over politics.</li>
-            <li><strong>Resilience is my default:</strong> I don’t give up. I outlast blockers, bullies, and bureaucracy. I double down when challenged—not to win, but to protect what matters.</li>
-        </ul>
-    </section>
+<header style="text-align:center">
+  <h1>Alex Mahrou — Leadership Manifesto</h1>
+  <p class="lead">Director of Data Platforms  |  Strategic Technologist  |  Culture Steward</p>
+</header>
 
-    <section>
-        <h2>🧠 Operating Principles</h2>
-        <ul>
-            <li><strong>Lead with systems thinking:</strong> I zoom out to see architecture, governance, and long-term impact. I zoom in to unblock, prototype, and ship.</li>
-            <li><strong>Build and steward:</strong> I don’t just advocate—I build. I lead communities, shape platforms, and create feedback loops that scale.</li>
-            <li><strong>Model what I expect:</strong> I document decisions, admit gaps, and invite critique. I celebrate wins and normalize iteration.</li>
-        </ul>
-    </section>
+<!-- Stakeholder (formerly Exec) brief, positioned up front -->
+<section id="stakeholder-brief">
+  <h2><span class="icon">🎯</span>Stakeholder Brief</h2>
+  <p>My commitment to radical transparency and visible accountability isn’t rebellion—it’s insurance. You’ll always know where the work stands, what’s at risk, and where I need your signal. The result? Fewer surprises, faster pivots, stronger outcomes.</p>
+</section>
 
-    <section>
-        <h2>🤝 Collaboration Expectations</h2>
-        <ul>
-            <li><strong>Be clear:</strong> If you’re unsure—ask. If you disagree—say so. If you make a mistake—own it. I’ll do the same.</li>
-            <li><strong>Be direct:</strong> I prefer candor over comfort. I’ll never punish honesty, and I’ll always protect those who speak up.</li>
-            <li><strong>Be accountable:</strong> If you commit, follow through. If you lead, lead visibly. If you need help, ask early.</li>
-        </ul>
-    </section>
+<section>
+  <h2><span class="icon">🔥</span>Core Beliefs</h2>
+  <ul>
+    <li><strong>Transparency is non‑negotiable:</strong> I put decisions in writing, own mistakes, and insist on daylight. Backchannels erode trust, so I design against them.</li>
+    <li><strong>Integrity beats hierarchy:</strong> I respect expertise, not titles. Plain speech and owned errors outrank polished politics.</li>
+    <li><strong>Resilience is my default:</strong> I outlast friction to protect what matters, not to score points.</li>
+  </ul>
+</section>
 
-    <footer>
-        “I build, I document, I outlast.” — Alex Mahrou
-    </footer>
+<section>
+  <h2><span class="icon">🧠</span>Operating Principles</h2>
+  <ul>
+    <li><strong>Lead with systems thinking:</strong> Zoom out for architecture and governance; zoom in to unblock and ship.</li>
+    <li><strong>Build and steward:</strong> Advocacy is table stakes—I build platforms and feedback loops that scale.</li>
+    <li><strong>Model what I expect:</strong> Document, invite critique, celebrate iteration.</li>
+  </ul>
+</section>
+
+<section>
+  <h2><span class="icon">🤝</span>Collaboration Expectations</h2>
+  <ul>
+    <li><strong>Be clear:</strong> Unsure—ask. Disagree—speak up. Mistake—own it. I’ll reciprocate.</li>
+    <li><strong>Be direct:</strong> Candor over comfort. Honesty is protected here.</li>
+    <li><strong>Be accountable:</strong> Commit, deliver, broadcast status. Ask early if blocked.</li>
+  </ul>
+</section>
+
+<footer>“I build, I document, I deliver.” — Alex Mahrou</footer>
+
 </body>
 </html>
